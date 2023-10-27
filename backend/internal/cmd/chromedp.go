@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"media-down/backend/pkg/common"
 	"media-down/backend/pkg/logs"
 	"media-down/backend/pkg/media"
 	"os"
@@ -19,8 +20,20 @@ func Chromedp(url, mediaType string, waitTime time.Duration, headless bool) {
 	// )
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
 		chromedp.Flag("headless", headless),
-		chromedp.DisableGPU,
+		// chromedp.DisableGPU,
+		chromedp.Flag("ignore-certificate-errors", true), //忽略错误
+		chromedp.Flag("disable-web-security", true),      //禁用网络安全标志
+		chromedp.NoFirstRun,                              //设置网站不是首次运行
+		chromedp.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36"), //设置UserAgent
 	)
+	if common.IsWindows() {
+		edgePath := "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+		if common.PathIsExis(edgePath) {
+			opts = append(opts,
+				chromedp.NoDefaultBrowserCheck, //不检查默认浏览器
+				chromedp.ExecPath(edgePath))
+		}
+	}
 	allocCtx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
 	defer cancel()
 	// create context

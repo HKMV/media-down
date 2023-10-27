@@ -5,3 +5,7 @@
 export function MediaDown(arg1) {
   return window['go']['cmd']['Cmd']['MediaDown'](arg1);
 }
+
+export function SetEngineType(arg1) {
+  return window['go']['cmd']['Cmd']['SetEngineType'](arg1);
+}

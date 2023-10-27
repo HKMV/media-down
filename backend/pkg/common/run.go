@@ -16,8 +16,11 @@ func GetAppPath() string {
 
 // IsWindows 判断当前系统是否为Windows系统？
 func IsWindows() bool {
-	if runtime.GOOS == "windows" {
-		return true
-	}
-	return false
+	return runtime.GOOS == "windows"
+}
+
+// PathIsExis 判断目录或文件是否存在
+func PathIsExis(path string) bool {
+	_, err := os.Stat(path)
+	return !os.IsNotExist(err)
 }
