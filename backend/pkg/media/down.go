@@ -1,7 +1,7 @@
 package media
 
 import (
-	"fmt"
+	"media-down/backend/pkg/logs"
 	"time"
 
 	"github.com/go-resty/resty/v2"
@@ -28,6 +28,6 @@ func DownFile(outpath, url string) (err error) {
 	if err != nil {
 		return err
 	}
-	fmt.Println(resp)
+	logs.Info("download resp: %v", resp)
 	return nil
 }

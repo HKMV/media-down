@@ -3,6 +3,8 @@ package main
 import (
 	"embed"
 	"media-down/backend"
+	"media-down/backend/pkg/logs"
+	wails2 "media-down/backend/pkg/wails"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -27,6 +29,7 @@ func main() {
 		BackgroundColour: &options.RGBA{R: 255, G: 255, B: 255, A: 255},
 		OnStartup:        app.Startup,
 		Bind:             app.GetBinds(),
+		Logger:           wails2.NewMultiLogger(logs.LogName()),
 	})
 
 	if err != nil {

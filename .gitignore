@@ -1,5 +1,5 @@
 **/._*
-
+logs/
 build/bin
 go.sum
 

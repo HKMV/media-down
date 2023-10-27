@@ -3,6 +3,7 @@ package backend
 import (
 	"context"
 	"media-down/backend/internal/cmd"
+	"media-down/backend/pkg/logs"
 )
 
 // App struct
@@ -19,6 +20,7 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) Startup(ctx context.Context) {
 	a.ctx = ctx
+	logs.SetContext(ctx)
 }
 
 // GetBinds 获取所有需要绑定的对象
