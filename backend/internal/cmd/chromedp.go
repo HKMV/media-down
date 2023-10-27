@@ -71,15 +71,16 @@ func downMedia(url, mediaType string, timeout time.Duration, ctx context.Context
 			if len(mtype) > 0 {
 				m.Name = m.Name + "." + mtype
 			}
-
+			m.Name = FileNameFix(m.Name)
 			logs.Info("start down [%s] url: %s", m.Name, m.Url)
 
 			outpath := strings.Join([]string{dir, mediaType, m.Name}, "/")
 			err := media.DownFile(outpath, m.Url)
 			if err != nil {
 				logs.Error("down error: %s", err.Error())
+			} else {
+				logs.Info("down success path: %s", outpath)
 			}
-			logs.Info("down success path: %s", outpath)
 			if i == 3 {
 				// close(fired)
 				ctx.Done()

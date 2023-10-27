@@ -54,3 +54,16 @@ func (a *Cmd) MediaDown(url string) {
 		Rod(url, mediaType, timeout, true)
 	}
 }
+
+func FileNameFix(name string) string {
+	newName := strings.ReplaceAll(name, "\\", "")
+	newName = strings.ReplaceAll(newName, "/", "")
+	newName = strings.ReplaceAll(newName, ":", "")
+	newName = strings.ReplaceAll(newName, "*", "")
+	newName = strings.ReplaceAll(newName, "?", "")
+	newName = strings.ReplaceAll(newName, "\"", "")
+	newName = strings.ReplaceAll(newName, "<", "")
+	newName = strings.ReplaceAll(newName, ">", "")
+	newName = strings.ReplaceAll(newName, "|", "")
+	return newName
+}
