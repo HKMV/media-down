@@ -1,6 +1,6 @@
 module media-down
 
-go 1.18
+go 1.24.0
 
 require (
 	github.com/chromedp/cdproto v0.0.0-20230802225258-3cf4e6d46a89
@@ -42,11 +42,11 @@ require (
 	github.com/ysmood/got v0.34.1 // indirect
 	github.com/ysmood/gson v0.7.3 // indirect
 	github.com/ysmood/leakless v0.8.0 // indirect
-	golang.org/x/crypto v0.36.0 // indirect
+	golang.org/x/crypto v0.45.0 // indirect
 	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1 // indirect
-	golang.org/x/net v0.38.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
 )
 
 // replace github.com/wailsapp/wails/v2 v2.5.1 => /Users/serenity/go/pkg/mod
